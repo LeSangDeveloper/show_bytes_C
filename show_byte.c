@@ -23,14 +23,18 @@ void show_pointer(void * x) {
     show_bytes((byte_pointer) &x, sizeof(void *));
 }
 
+void test_show_bytes(int val) {
+    int ival = val;
+    float fval = (float)ival;
+    void * pval = &ival;  
+    printf("\nShow bytes of int %d: ", val);
+    show_int(ival);
+    printf("\nShow bytes of float %f: ", fval);
+    show_float(fval);
+    printf("\nShow bytes of pointer void * to [%p] : ", &ival);
+    show_pointer(pval);
+}
+
 int main() {
-    int x = 2;
-    float x2 = 2.0;
-    void *x3 = &x2;  
-    printf("\nShow bytes of int 2: ");
-    show_int(x);
-    printf("\nShow bytes of float 2.0 at %.2x : ", &x2);
-    show_float(x2);
-    printf("\nShow bytes of pointer void * :");
-    show_pointer(x3);
+    test_show_bytes(2);
 }
